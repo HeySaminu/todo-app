@@ -92,9 +92,8 @@ main{
     width: 100%;
     max-width: 432px;
     margin-inline: auto;
-    /* border: solid 1px #3E1671; */
+    padding:16px;
 }
-
 .todo_list-wrapper,
 .todo-wrapper{
     display: flex;
