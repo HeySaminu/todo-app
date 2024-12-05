@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap');
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+    font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body, h1, h2, h3, h4, p,
+figure, blockquote, dl, dd {
+  margin: 0;
+  font-size: inherit;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1, h2, h3, h4,
+button, input, label {
+    font-weight: normal;
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1, h2,
+h3, h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+  text-decoration: none;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input, button,
+textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+body{
+    background-color: #0D0714;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 400;
+}
+main{
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    flex-direction: column;
+}
+.todo-wrapper{
+    width: 100%;
+    max-width: 432px;
+    margin-inline: auto;
+    /* border: solid 1px #3E1671; */
+}
+
+.todo_list-wrapper,
+.todo-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.todo_list-wrapper h1{
+    margin-bottom: 16px;
+}
+
+.todo_input{
+    width: 100%;
+    display: inline-flex;
+    gap: 10px;
+}
+
+.todo_input input{
+    width: 100%;
+    max-width: 380px;
+    border: 1px solid #3E1671;
+    border-radius: 10px;
+    background-color: #0D0714;
+    padding: 0;
+    padding-inline-start: 15px;
+    padding-block: 10px;
+}
+
+.todo_list{
+    display: grid;
+    gap: 16px;
+}
+
+.todo_task{
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #15101C;
+    color: #9E78CF;
+    border-radius: 10px;
+    padding: 24px 20px;
+}
+.todo_task svg{
+    transition: all 1.3s;
+}
+
+.todo_task svg:hover path{
+    stroke: #3E1671;
+}
+
+:is(.todo_list-completed) .todo_task{
+    color: #78CFB0;
+    text-decoration: line-through;
+}
+
+:is(.todo_list-completed) span.task_actions{
+    display: none;
+}
