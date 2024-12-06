@@ -55,6 +55,8 @@ a:not([class]) {
   text-decoration-skip-ink: auto;
   color: currentColor;
   text-decoration: none;
+  display: inline-block;
+  line-height: 0;
 }
 
 /* Make images easier to work with */
@@ -92,8 +94,13 @@ main{
     width: 100%;
     max-width: 432px;
     margin-inline: auto;
-    padding:16px;
 }
+@media screen and (max-width: 600px) {
+    .todo-wrapper{
+        padding:16px;
+    }
+}
+
 .todo_list-wrapper,
 .todo-wrapper{
     display: flex;
@@ -109,19 +116,26 @@ main{
     width: 100%;
     display: inline-flex;
     gap: 10px;
+    align-items: center;
 }
 
 .todo_input input{
     width: 100%;
     max-width: 380px;
     border: 1px solid #3E1671;
+    outline: none;
     border-radius: 10px;
     background-color: #0D0714;
     padding: 0;
     padding-inline-start: 15px;
     padding-block: 10px;
+    min-height: 40px;
+    transition: border .2s;
 }
-
+.todo_input input:is(:focus-visible, :focus, :focus-within){
+    outline: none;
+    border: 1px solid #9E78CF;
+}
 .todo_list{
     display: grid;
     gap: 16px;
@@ -134,7 +148,7 @@ main{
     background: #15101C;
     color: #9E78CF;
     border-radius: 10px;
-    padding: 24px 20px;
+    padding: 22.5px 20px;
 }
 .todo_task svg{
     transition: all 1.3s;
@@ -143,7 +157,9 @@ main{
 .todo_task svg:hover path{
     stroke: #3E1671;
 }
-
+span.task_actions{
+    line-height: 0;
+}
 :is(.todo_list-completed) .todo_task{
     color: #78CFB0;
     text-decoration: line-through;
