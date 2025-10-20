@@ -1,171 +1,103 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap');
 
-/* Box sizing rules */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
 
-/* Prevent font size inflation */
-html {
-    font-family: "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-  -moz-text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
-}
-
-/* Remove default margin in favour of better control in authored CSS */
-body, h1, h2, h3, h4, p,
-figure, blockquote, dl, dd {
-  margin: 0;
-  font-size: inherit;
-}
-
-/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-ul[role='list'],
-ol[role='list'] {
-  list-style: none;
-}
-
-/* Set core body defaults */
-body {
-  min-height: 100vh;
-  line-height: 1.5;
-}
-
-/* Set shorter line heights on headings and interactive elements */
-h1, h2, h3, h4,
-button, input, label {
-    font-weight: normal;
-  line-height: 1.1;
-}
-
-/* Balance text wrapping on headings */
-h1, h2,
-h3, h4 {
-  text-wrap: balance;
-}
-
-/* A elements that don't have a class get default styles */
-a:not([class]) {
-  text-decoration-skip-ink: auto;
-  color: currentColor;
-  text-decoration: none;
-  display: inline-block;
-  line-height: 0;
-}
-
-/* Make images easier to work with */
-img,
-picture {
-  max-width: 100%;
-  display: block;
-}
-
-/* Inherit fonts for inputs and buttons */
-input, button,
-textarea, select {
-  font-family: inherit;
-  font-size: inherit;
-}
-
-/* Make sure textareas without a rows attribute are not tiny */
-textarea:not([rows]) {
-  min-height: 10em;
+h1,
+h2,
+h3,
+h4{
+  margin:0;
 }
 
 body{
     background-color: #0D0714;
     color: #FFFFFF;
+    font-family: Inter;
     font-size: 16px;
     font-weight: 400;
-}
-main{
-    display: flex;
     min-height: 100vh;
-    justify-content: center;
-    flex-direction: column;
+    display: grid;
+    place-items: center;
+    margin: 16px;
 }
-.todo-wrapper{
-    width: 100%;
-    max-width: 432px;
-    margin-inline: auto;
+
+.todoWrapper{
+  width: 100%;
+  max-inline-size: 432px;
+  margin-inline: auto;
+  display: grid;
+  gap: 60px;
+
 }
-@media screen and (max-width: 600px) {
-    .todo-wrapper{
-        padding:16px;
+
+.addTodo{
+  display: grid;
+  grid-template-columns: auto 40px;
+  gap: 10px;
+    input, button{
+      all: unset;
+      font-family: inherit;
+    }
+    input[type="text"]{
+      border: 1px solid #3E1671;
+      border-radius: 10px;
+      padding: 9px 16px;
+      transition: border-color .3s ease;
+      &:focus-visible{
+        border-color: #9E78CF;
+      }
+    }
+    button{
+    background: #9E78CF;
+    border-radius: 10px;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+    transition: background .3s ease;
+    &:hover{
+      background: #7742bd;
+    }
     }
 }
 
-.todo_list-wrapper,
-.todo-wrapper{
-    display: flex;
-    flex-direction: column;
-    gap: 60px;
-}
-
-.todo_list-wrapper h1{
-    margin-bottom: 16px;
-}
-
-.todo_input{
-    width: 100%;
-    display: inline-flex;
-    gap: 10px;
-    align-items: center;
-}
-
-.todo_input input{
-    width: 100%;
-    max-width: 380px;
-    border: 1px solid #3E1671;
-    outline: none;
-    border-radius: 10px;
-    background-color: #0D0714;
-    color: #9E78CF;
-    padding: 0;
-    padding-inline-start: 15px;
-    padding-block: 10px;
-    min-height: 40px;
-    transition: border .2s;
-}
-.todo_input input:is(:focus-visible, :focus, :focus-within){
-    outline: none;
-    border: 1px solid #9E78CF;
-}
-.todo_list{
+.mainTodo,
+.completeTodo{
+  display: inline-grid;
+  gap: 16px;
+  h1,h2{
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1;
+  }
+  .todoItem{
     display: grid;
-    gap: 16px;
-}
-
-.todo_task{
-    display: inline-flex;
-    justify-content: space-between;
     align-items: center;
-    background: #15101C;
-    color: #9E78CF;
+    justify-items: stretch;
+    grid-template-columns: auto 30px 30px;
+    gap: 8px;
+    padding: 22.5px;
     border-radius: 10px;
-    padding: 22.5px 20px;
-}
-.todo_task svg{
-    transition: all 1.3s;
+    button{
+      all: unset;
+    }
+      &.pending{
+        background: #15101C;
+        color: #9E78CF;
+        svg{
+          cursor: pointer;
+          path{
+            transition: all .3s ease;
+          }
+          &:hover path{
+          fill: #3E1671;
+        }
+        }
+      }
+      &.completed{
+        background: #15101C;
+        color: #78CFB0;
+        text-decoration: line-through;
+        padding: 29.5px 22.5px;
+      }
+  }
 }
 
-.todo_task svg:hover path{
-    stroke: #3E1671;
-}
-span.task_actions{
-    line-height: 0;
-}
-:is(.todo_list-completed) .todo_task{
-    color: #78CFB0;
-    text-decoration: line-through;
-}
-
-:is(.todo_list-completed) span.task_actions{
-    display: none;
-}
