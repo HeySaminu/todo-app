@@ -8,14 +8,34 @@
 </head>
 <body>
     <main class="todoWrapper">
-    <div class="addTodo"><input type="text" placeholder="Add a new task" data-js="new-task">   <button type="button" data-js="add-btn"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none"><path fill="#fff" d="M19.25 11a.687.687 0 0 1-.688.688h-6.875v6.874a.687.687 0 1 1-1.374 0v-6.875H3.436a.687.687 0 1 1 0-1.374h6.876V3.436a.687.687 0 1 1 1.374 0v6.876h6.876a.687.687 0 0 1 .687.687Z"/></svg></button></div>
-    <div class="mainTodo">
-        <h1>No task to do</h1>
-        
-    </div>
-    <div class="completeTodo">
-        <h1></h1>
-    </div>
+        <h1 class="appTitle">Todo App</h1>
+        <form class="addTodo" data-js="todo-form">
+            <label class="visually-hidden" for="newTaskInput">Add a new task</label>
+            <input
+                id="newTaskInput"
+                type="text"
+                placeholder="Add a new task"
+                autocomplete="off"
+                data-js="new-task"
+            >
+            <button type="submit" data-js="add-btn" aria-label="Add task">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" aria-hidden="true">
+                    <path fill="#fff" d="M19.25 11a.687.687 0 0 1-.688.688h-6.875v6.874a.687.687 0 1 1-1.374 0v-6.875H3.436a.687.687 0 1 1 0-1.374h6.876V3.436a.687.687 0 1 1 1.374 0v6.876h6.876a.687.687 0 0 1 .687.687Z"/>
+                </svg>
+            </button>
+        </form>
+
+        <section class="todoSection">
+            <h2>Tasks to do <span data-js="pending-count">0</span></h2>
+            <div class="todoList" data-js="pending-list"></div>
+            <p class="emptyState" data-js="pending-empty">No tasks to do.</p>
+        </section>
+
+        <section class="todoSection">
+            <h2>Done <span data-js="completed-count">0</span></h2>
+            <div class="todoList" data-js="completed-list"></div>
+            <p class="emptyState" data-js="completed-empty">No completed tasks yet.</p>
+        </section>
     </main>
     <script src="todoFunctions.js"></script>
 </body>

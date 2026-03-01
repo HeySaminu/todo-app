@@ -1,17 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap');
 
-
 h1,
 h2,
-h3,
-h4{
-  margin:0;
+h3 {
+    margin: 0;
 }
 
-body{
-    background-color: #0D0714;
-    color: #FFFFFF;
-    font-family: Inter;
+body {
+    background-color: #0d0714;
+    color: #ffffff;
+    font-family: Inter, sans-serif;
     font-size: 16px;
     font-weight: 400;
     min-height: 100vh;
@@ -20,84 +18,181 @@ body{
     margin: 16px;
 }
 
-.todoWrapper{
-  width: 100%;
-  max-inline-size: 432px;
-  margin-inline: auto;
-  display: grid;
-  gap: 60px;
-
+.todoWrapper {
+    width: 100%;
+    max-inline-size: 432px;
+    margin-inline: auto;
+    display: grid;
+    gap: 28px;
 }
 
-.addTodo{
-  display: grid;
-  grid-template-columns: auto 40px;
-  gap: 10px;
-    input, button{
-      all: unset;
-      font-family: inherit;
-    }
-    input[type="text"]{
-      border: 1px solid #3E1671;
-      border-radius: 10px;
-      padding: 9px 16px;
-      transition: border-color .3s ease;
-      &:focus-visible{
-        border-color: #9E78CF;
-      }
-    }
-    button{
-    background: #9E78CF;
+.appTitle {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.addTodo {
+    display: grid;
+    grid-template-columns: 1fr 40px;
+    gap: 10px;
+}
+
+.addTodo input,
+.addTodo button {
+    all: unset;
+    font-family: inherit;
+}
+
+.addTodo input[type="text"] {
+    border: 1px solid #3e1671;
+    border-radius: 10px;
+    padding: 10px 16px;
+    transition: border-color 0.3s ease;
+}
+
+.addTodo input[type="text"]:focus-visible {
+    border-color: #9e78cf;
+}
+
+.addTodo button {
+    background: #9e78cf;
     border-radius: 10px;
     display: grid;
     place-content: center;
     cursor: pointer;
-    transition: background .3s ease;
-    &:hover{
-      background: #7742bd;
-    }
-    }
+    transition: background 0.3s ease;
 }
 
-.mainTodo,
-.completeTodo{
-  display: inline-grid;
-  gap: 16px;
-  h1,h2{
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1;
-  }
-  .todoItem{
+.addTodo button:hover {
+    background: #7742bd;
+}
+
+.addTodo button:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+}
+
+.todoSection {
+    display: grid;
+    gap: 12px;
+}
+
+.todoSection h2 {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1;
+    display: flex;
+    gap: 6px;
+}
+
+.todoList {
+    display: grid;
+    gap: 12px;
+}
+
+.todoItem {
     display: grid;
     align-items: center;
-    justify-items: stretch;
-    grid-template-columns: auto 30px 30px;
-    gap: 8px;
-    padding: 22.5px;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    padding: 16px;
     border-radius: 10px;
-    button{
-      all: unset;
-    }
-      &.pending{
-        background: #15101C;
-        color: #9E78CF;
-        svg{
-          cursor: pointer;
-          path{
-            transition: all .3s ease;
-          }
-          &:hover path{
-          fill: #3E1671;
-        }
-        }
-      }
-      &.completed{
-        background: #15101C;
-        color: #78CFB0;
-        text-decoration: line-through;
-        padding: 29.5px 22.5px;
-      }
-  }
+    background: #15101c;
 }
 
+.todoItem h3 {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.todoItem.pending h3 {
+    color: #9e78cf;
+}
+
+.todoItem.completed h3 {
+    color: #78cfb0;
+    text-decoration: line-through;
+}
+
+.todoActions {
+    display: inline-flex;
+    gap: 8px;
+}
+
+.todoActions button {
+    all: unset;
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.todoActions button[data-action="save-edit"],
+.todoActions button[data-action="cancel-edit"] {
+    width: auto;
+    height: auto;
+    padding: 6px 10px;
+    font-size: 13px;
+    line-height: 1;
+    border: 1px solid #3e1671;
+    color: #ffffff;
+}
+
+.todoActions button[data-action="save-edit"] {
+    background: #9e78cf;
+    border-color: #9e78cf;
+}
+
+.todoActions button[data-action="cancel-edit"] {
+    background: transparent;
+}
+
+.todoActions button svg path {
+    transition: fill 0.2s ease;
+}
+
+.todoActions button:hover svg path {
+    fill: #ffffff;
+}
+
+.todoActions button:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 1px;
+}
+
+.todoEditInput {
+    all: unset;
+    border: 1px solid #3e1671;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 16px;
+    line-height: 1.2;
+    color: #ffffff;
+    background: #1c1525;
+}
+
+.todoEditInput:focus-visible {
+    border-color: #9e78cf;
+}
+
+.emptyState {
+    color: #b5a8c8;
+    font-size: 14px;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
